@@ -35,6 +35,24 @@ Kafka Consumer
    ↓
 Payment Processing
 
+## Setup Instructions
+
+1. Clone the repository
+
+git clone https://github.com/Srishti0409/kafka-payment-processing-system.git
+
+2. Start Apache Kafka
+
+bin/kafka-server-start.sh config/server.properties
+
+3. Run the Spring Boot application
+
+Run PaymentSystemApplication.java
+
+4. Send a test payment request
+
+curl -X POST http://localhost:8080/payments -d "userId=101 amount=500"
+
 ## Example Request
 
 curl -X POST http://localhost:8080/payments -d "userId=101 amount=500"
