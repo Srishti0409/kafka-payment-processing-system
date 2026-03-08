@@ -21,6 +21,20 @@ API → Kafka Producer → Kafka Topic → Kafka Consumer
 3. A Kafka consumer listens to the topic
 4. The consumer processes the payment event
 
+## Architecture
+
+User/API
+   ↓
+Spring Boot Controller
+   ↓
+Kafka Producer
+   ↓
+Kafka Topic (payments)
+   ↓
+Kafka Consumer
+   ↓
+Payment Processing
+
 ## Example Request
 
 curl -X POST http://localhost:8080/payments -d "userId=101 amount=500"
