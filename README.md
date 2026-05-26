@@ -1,10 +1,26 @@
 # Kafka Payment Processing System
 
-A backend payment processing pipeline built using Spring Boot and Apache Kafka demonstrating event-driven architecture.
+A backend payment processing pipeline built using Spring Boot and Apache Kafka demonstrating event-driven architecture and asynchronous communication.
+
+---
 
 ## Architecture
 
-API → Kafka Producer → Kafka Topic → Kafka Consumer
+```text
+API Request
+    ↓
+Spring Boot REST API
+    ↓
+Kafka Producer
+    ↓
+Kafka Topic (payments)
+    ↓
+Kafka Consumer
+    ↓
+Payment Processing
+```
+
+---
 
 ## Technologies Used
 
@@ -13,54 +29,97 @@ API → Kafka Producer → Kafka Topic → Kafka Consumer
 - Apache Kafka
 - REST API
 - H2 Database
+- Maven
+
+---
+
+## Features
+
+- Event-driven payment processing
+- Kafka Producer and Consumer implementation
+- Asynchronous communication workflow
+- REST API integration
+- Decoupled backend architecture
+
+---
 
 ## How It Works
 
-1. A payment request is sent to the REST API
-2. The API publishes the payment event to a Kafka topic
-3. A Kafka consumer listens to the topic
-4. The consumer processes the payment event
+1. A payment request is sent to the REST API.
+2. The API publishes the payment event to a Kafka topic.
+3. A Kafka consumer listens to the topic.
+4. The consumer processes the payment asynchronously.
 
-## Architecture
+---
 
-User/API
-   ↓
-Spring Boot Controller
-   ↓
-Kafka Producer
-   ↓
-Kafka Topic (payments)
-   ↓
-Kafka Consumer
-   ↓
-Payment Processing
+## API Endpoint
+
+### Create Payment
+
+```http
+POST /payments
+```
+
+### Example Request
+
+```bash
+curl -X POST http://localhost:8080/payments \
+-d "userId=101 amount=500"
+```
+
+### Example Response
+
+```text
+Payment received: userId=101 amount=500
+```
+
+---
 
 ## Setup Instructions
 
-1. Clone the repository
+### Clone the Repository
 
+```bash
 git clone https://github.com/Srishti0409/kafka-payment-processing-system.git
+```
 
-2. Start Apache Kafka
+### Start Kafka
 
+```bash
 bin/kafka-server-start.sh config/server.properties
+```
 
-3. Run the Spring Boot application
+### Run the Application
 
-Run PaymentSystemApplication.java
+Run:
 
-4. Send a test payment request
+```text
+PaymentSystemApplication.java
+```
 
-curl -X POST http://localhost:8080/payments -d "userId=101 amount=500"
+OR
 
-## Example Request
+```bash
+mvn spring-boot:run
+```
 
-curl -X POST http://localhost:8080/payments -d "userId=101 amount=500"
-
-## Output
-
-Payment received: userId=101 amount=500
+---
 
 ## Project Purpose
 
-This project demonstrates asynchronous event processing used in distributed backend systems such as financial transaction platforms.
+This project demonstrates how distributed backend systems process payment events asynchronously using Apache Kafka and Spring Boot.
+
+---
+
+## Future Improvements
+
+- Docker integration
+- Payment status tracking
+- Authentication & authorization
+- MySQL/PostgreSQL integration
+
+---
+
+## Author
+
+**Srishti Gupta**  
